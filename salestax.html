@@ -1,72 +1,91 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-    <head>
-        <meta charset="utf-8">
-        <meta name="author" content="your name">
-        <link type="text/css" rel="stylesheet" href="taxstyles.css">
-        <title>Sales tax</title>
-    </head>
-    <body>
-        <section id="widget">
-            <header>
-                <h1>Illinois Sales Tax Calculator</h1>
-                <h4>price of goods and services changes based on the city or county purchased.</h4>
-            </header>
-            <div id="user-input">
-                <p>You will need a few inputs to make this work properly.  You can delete this comment once you feel you know how many variables you need.</p>
-                <div class="options">
-                    <label>Price</label>
-                    <input id="price" type="text" name="price" value=""></input>
-                </div>
-                <div class="options">
-                    <label>Shipping</label><br><br>
-                    <input id="shippingtype" type="radio" name="shipping" value="standard">Standard</input><br>
-                    <input id="shippingtype" type="radio" name="shipping" value="Priority">Priority</input><br>
-                    <input id="shippingtype" type="radio" name="shipping" value="Express">Express</input><br>
-                </div>
-                <div class="options">
-                    <label>City</label>
-                    <input id="city" type="text" name="city" value="">
-                </div>
-                <button onclick="calculate()">Calculate</button>
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="your name">
+    <link type="text/css" rel="stylesheet" href="taxstyles.css">
+    <title>Sales tax</title>
+</head>
+<body>
+    <section id="widget">
+        <header>
+            <h1>Illinois Sales Tax Calculator</h1>
+            <h4>price of goods and services changes based on the city or county purchased.</h4>
+        </header>
+        <div id="user-input">
+            <p>You will need a few inputs to make this work properly.  You can delete this comment once you feel you know how many variables you need.</p>
+            <div class="options">
+                <label>Price</label>
+                <input id="price" type="text" name="price" value=""></input>
             </div>
-            <footer>
-                <span id="answer"></span>
-            </footer>
-        </section>
-    </body>
-    <script type="text/javascript">
+            <div class="options">
+                <label>Shipping</label><br><br>
+                <input class="shippingtype" type="radio" name="shipping" value="standard">Standard</input><br>
+                <input class="shippingtype" type="radio" name="shipping" value="Priority">Priority</input><br>
+                <input class="shippingtype" type="radio" name="shipping" value="Express">Express</input><br>
+            </div>
+            <div class="options">
+                <label>City</label>
+                <input id="city" type="text" name="city" value="">
+            </div>
+            <button onclick="calculate()">Calculate</button>
+        </div>
+        <footer>
+            <span id="answer"></span>
+        </footer>
+    </section>
+</body>
+<script type="text/javascript">
 
-        function calculate(){
-      const doc = document;
-        //Query select your information
-        let price = doc.querySelector('#price');
-        let shippingType = doc.querySelector('#shippingtype');
-        let shippingLocation = doc.querySelector("#city");
-        let calculateBTN = doc.querySelector('button');
-
-        //conditionally choose the shipping tax
-        let shippingTax = ;
-        let tax10000 = ['Peoria','Arlington Heights','Schaumburg','Evanston','Palatine', 'Skokie'];
-        let tax850 = [];
-        let tax925 = [];
-        let tax750 = [];
-
-        if(tax10000.includes(shippingLocation)){
-
-        }
-        else if(tax925.includes(shippingLocation)){
-
-       }
-       else if (tax850.includes(shippingLocation)) {
-
-       }
-       else if (tax750.includes(shippingLocation)) {
-
-       }
+function calculate(){
+    const doc = document;
+    //Query select your information
+    let price = doc.querySelector('#price');
+    let shippingType = doc.querySelector('#shippingtype');
+    shippingType[0] = 2.99;
+    shippingType[1] = 4.99;
+    shippingType[2] = 8.99;
+    let shippingLocation = doc.querySelector("#city");
+    let calculateBTN = doc.querySelector('button');
+    let answer = doc.querySelector('#answer');
 
 
+    //conditionally choose the shipping tax
+    let shippingTax = ;
+    let tax10000 = ['Peoria','Arlington Heights','Schaumburg','Evanston','Palatine', 'Skokie'];
+    let tax850 = [];
+    let tax925 = [];
+    let tax750 = [];
 
-        }
-    </script>
+    if(tax10000.includes(shippingLocation)){
+        shippingTax=1.1;
+    }
+    else if(tax925.includes(shippingLocation)){
+        shippingTax=1.0925;
+    }
+    else if (tax850.includes(shippingLocation)) {
+        shippingTax=1.085;
+    }
+    else if (tax750.includes(shippingLocation)) {
+        shippingTax=1.075;
+    }
+
+    if (shippingType == 'standard') {
+
+    }
+    else if (shippingType == ) {
+
+    }
+    else if (shippingType == ) {
+
+    }
+    
+    let cost = number(input.value);
+    let totalCost = (cost*1.0625)+(*1.0925);
+    answer.innerHTML = '$'+totalCost;
+
+
+
+}
+</script>
 </html>
