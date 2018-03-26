@@ -42,11 +42,10 @@
 function calculate(){
     const doc = document;
     //Query select your information
-    let price = doc.querySelector('#price');
-    let shippingType = doc.querySelector('#shipping');
+    let price = doc.querySelector('#price').value;
+    let shippingType = doc.querySelector('#shipping').value;
 
-    let shippingLocation = doc.querySelector("#city");
-    let calculateBTN = doc.querySelector('button');
+    let shippingLocation = doc.querySelector("#city").value;
     let answer = doc.querySelector('#answer');
 
 
@@ -81,9 +80,9 @@ function calculate(){
         type = 8.99;
     }
 
-    let cost = Number(price.innerHTML);
-    let totalCost = (cost*1.0625)+(1.0925);
-    answer.innerHTML = '$'+cost;
+    let cost = Number(price);
+    let totalCost = (cost*1.0625)+(type*shippingTax);
+    answer.innerHTML = '$'+Math.round(100*totalCost)/100;
 
 
 
