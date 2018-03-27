@@ -34,6 +34,7 @@
     </div>
     <footer>
       <span id="answer"></span>
+      <span id="dateOfDelivery"></span>
     </footer>
   </section>
 </body>
@@ -48,6 +49,10 @@ function calculate(){
   let shippingLocation = doc.querySelector("#city").value;
   let answer = doc.querySelector('#answer');
 
+  let date = doc.querySelector('#dateOfDelivery');
+
+  let currentDate = new Date();
+
 
   //conditionally choose the shipping tax
   let shippingTax;
@@ -57,6 +62,8 @@ function calculate(){
   let tax850 = ['Rockford', 'Springfield', 'Waukegan', 'Bloomington', 'Bolingbrook'];
   let tax925 = ['Joliet', 'Champaign', 'Decatur'];
   let tax750 = ['Naperville'];
+
+  let daysToShip;
 
   if(tax10000.includes(shippingLocation)){
     shippingTax=1.1;
@@ -73,17 +80,27 @@ function calculate(){
 
   if (shippingType == 'standard') {
     type = 2.99;
+    daysToShip = 5;
   }
   else if (shippingType == 'priority') {
     type = 4.99;
+    daysToShip = 3;
   }
   else if (shippingType == 'express') {
     type = 8.99;
+    daysToShip = 2;
   }
+
+  let shippingDate = currentDate.getTime();
+  shippingDate+= (daysToShip * 24 * 60 * 60 * 1000);
+  currentDate.setTime(shippingDate);
+  //shippingDate = shippingDate + (daysToShip * 24 * 60 * 60 * 1000);
+
 
   let cost = Number(price);
   let totalCost = (cost*1.0625)+(type*shippingTax);
   answer.innerHTML = '$'+Math.round(100*totalCost)/100;
+  date.innerHTML = currentDate;
 }
 </script>
 </html>
