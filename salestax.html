@@ -34,7 +34,9 @@
     </div>
     <footer>
       <span id="answer"></span>
+      <br>
       <span id="dateOfDelivery"></span>
+
     </footer>
   </section>
 </body>
@@ -57,10 +59,16 @@ function calculate(){
   //conditionally choose the shipping tax
   let shippingTax;
   let type;
-  let tax10000 = ['Chicago', 'Peoria','Arlington Heights','Schaumburg', 'Orland Park',
-  'Evanston', 'Skokie', 'Elgin', 'Cicero', 'Palatine'];
-  let tax850 = ['Rockford', 'Springfield', 'Waukegan', 'Bloomington', 'Bolingbrook'];
-  let tax925 = ['Joliet', 'Champaign', 'Decatur'];
+
+  let tax10750 = ['Cicero'];
+  let tax10250 = ['Chicago', 'Elgin', 'Skokie'];
+  let tax10000 = ['Peoria','Arlington Heights','Schaumburg', 'Orland Park',
+  'Evanston', 'Palatine'];
+  let tax8250 = ['Rockford', 'Waukegan'];
+  let tax8750 = ['Joliet', 'Bloomington'];
+  let tax850 = ['Springfield', 'Bolingbrook'];
+  let tax9000 = ['Champaign'];
+  let tax925 = ['Decatur', 'Skokie'];
   let tax750 = ['Naperville'];
 
   let daysToShip;
@@ -76,6 +84,22 @@ function calculate(){
   }
   else if (tax750.includes(shippingLocation)) {
     shippingTax=1.075;
+  }
+
+  else if (tax10750.includes(shippingLocation)) {
+    shippingTax=1.1075;
+  }
+  else if (tax10250.includes(shippingLocation)) {
+    shippingTax=1.1025;
+  }
+  else if (tax8250.includes(shippingLocation)) {
+    shippingTax=1.0825;
+  }
+  else if (tax8750.includes(shippingLocation)) {
+    shippingTax=1.0875;
+  }
+  else if (tax9000.includes(shippingLocation)) {
+    shippingTax=1.09;
   }
 
   if (shippingType == 'standard') {
